@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Aiti Guru
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Подготовка к работе
 
-## Available Scripts
+Для работы с приложением и выполнения действий, описанных в данном readme, на устройстве необходимо иметь следующее
+установленное ПО:
 
-In the project directory, you can run:
+-   NodeJS (рекомендуемая версия 18.19.0)
+-   npm
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Установка зависимостей
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-  Убедитесь, что все необходимые инструменты установлены. Проверьте версии программного обеспечения и при необходимости обновите Node.js с помощью nvm, чтобы соответствовать рекомендуемым требованиям.
+-  Выполнить команду `npm install`
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Разработка и запуск
 
-### `npm run build`
+-  Для запуска локального Vite dev-сервера воспользуйтесь следующей командой: `npm run dev`
+-  Для сборки приложения в продуктивном режиме без запуска локального сервера воспользуйтесь следующей командой:
+   `npm run build`.
+-  В проекте используется Prettier совместно с ESLint для поддержания единообразного стиля кода. Для проверки и исправления файлов вручную используйте команду: `npm run prettier`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# КОММЕНТАРИИ:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Условия:
+- Используй React (версия 18+). +
+- Используй TypeScript (строгая типизация обязательна). +
+- Работоспособность в актуальной версии Google Chrome. +
+- Остальное (выбор стейт-менеджера, UI библиотек) на твоё усмотрение, но будь готов обосновать выбор. Остановился на antd, стабильная библиотека, чей дизайн поход на дизайн из макета.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Функциональные требования:
+Форма входа:
+- Валидация полей (обязательность заполнения). Обычно подключаю схемы, но в данном случае излишне.
+- Обработка ошибок: если API возвращает ошибку, выводить уведомление или текст ошибки под полями.
 
-### `npm run eject`
+## Логика запоминания данных для входа::
+- Если чекбокс установлен, нужно сохранять токен авторизации так, чтобы сессия жила после закрытия браузера. Использовал localStorage
+Если не установлен, то сессия должна сбрасываться при закрытии вкладки. Использовал sessionStorage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Вывод списка товаров:
+Соответствие столбцам из макета Figma +
+Прогресс-бар при подгрузке +
+Подгрузка данных из API. +
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Сортировка:
+Возможность сортировки по столбцам (например, по цене или рейтингу). Использовал апи для сортироки и пагинации
+Должно храниться состояние сортировки. Храниться в URL и предзаполняет сортировку при открытии страницы
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Добавление товара:
+- По нажатию кнопки "Добавить" открывается форма добавления товара с возможностью заполнить основные поля: Наименование, цена, вендор, артикул. +
+- При успешном добавлении  показывать базовое Toast уведомление +
+- Логику сохранения через API делать при этом не нужно. +
+- 
+## Логика интерфейса:
+- Если рейтинг товара ниже 3, значение должно подсвечиваться красным цветом. +
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Поиск товаров:
+- Использовать API +
